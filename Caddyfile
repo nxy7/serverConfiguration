@@ -8,3 +8,7 @@ stockbuddy.pl {
 		reverse_proxy 172.17.0.1:3000
 	}
 }
+
+streampai.pl {
+    respond "Hello mate" 
+}
