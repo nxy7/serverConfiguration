@@ -1,0 +1,10 @@
+{
+	debug
+	auto_https disable_redirects
+}
+
+stockbuddy.pl {
+	handle {
+		reverse_proxy 172.17.0.1:3000
+	}
+}
