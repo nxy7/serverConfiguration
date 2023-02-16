@@ -2,17 +2,29 @@
 	debug
 	auto_https disable_redirects
 	admin 0.0.0.0:2019
-	# servers {
-	# 	metrics
-	# }
+	servers {
+		metrics
+	}
+	servers stockbuddy.pl {
+		name stockbuddy
+		metrics
+	}
+	servers streampai.pl {
+		name streampai
+		metrics
+	}
+	# log {
+        # output file /var/log/caddy/access.log
+        # format json
+    # }
 }
 
 stockbuddy.pl {
-	handle {
-		reverse_proxy 172.17.0.1:3000
-	}
+	reverse_proxy 172.17.0.1:3000
+	metrics /metrics
 }
 
 streampai.pl {
-    respond "Hello mate" 
+    respond "Hello mate"
+	metrics /metrics
 }
