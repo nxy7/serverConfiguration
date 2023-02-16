@@ -1,6 +1,10 @@
 {
 	debug
 	auto_https disable_redirects
+	admin 0.0.0.0:2019
+	# servers {
+	# 	metrics
+	# }
 }
 
 stockbuddy.pl {
