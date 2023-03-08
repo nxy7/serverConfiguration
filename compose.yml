@@ -8,6 +8,10 @@ services:
       - 80:80
       - 443:443
       - 2019:2019
+      - 7777:7777
+      - 7778:7778
+    networks:
+      - "stockbuddy"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
@@ -16,12 +20,17 @@ services:
   #   image: grafana/grafana-oss:latest
   #   ports:
   #     - 3007:3000
-  prometheus:
-    image: prom/prometheus
-    ports:
-      - 9090:9090
-    volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+  # prometheus:
+  #   image: prom/prometheus
+  #   ports:
+  #     - 9090:9090
+  #   volumes:
+  #     - ./prometheus.yml:/etc/prometheus/prometheus.yml
 volumes:
   caddy_data:
   caddy_config:
+
+networks:
+  stockbuddy:
+    external: true
+  streampai:

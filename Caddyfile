@@ -1,16 +1,8 @@
 {
 	debug
-	auto_https disable_redirects
+	# auto_https disable_redirects
 	admin 0.0.0.0:2019
 	servers {
-		metrics
-	}
-	servers stockbuddy.pl {
-		name stockbuddy
-		metrics
-	}
-	servers streampai.pl {
-		name streampai
 		metrics
 	}
 	# log {
@@ -19,12 +11,12 @@
     # }
 }
 
-stockbuddy.pl {
-	reverse_proxy 172.17.0.1:3000
-	metrics /metrics
+stockbuddy.pl http://localhost:7777 {
+	reverse_proxy frontend:3000
+	# metrics /metrics
 }
 
-streampai.pl {
+streampai.pl http://localhost:7778 {
     respond "Hello mate"
 	metrics /metrics
 }
